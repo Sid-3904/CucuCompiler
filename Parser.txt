@@ -1,0 +1,57 @@
+Datatype : int
+Varibale : in 
+Value : 4 
+Value : 5 
+Value : 3 
+Operator : * 
+Operator : + 
+Assignment : =
+
+Datatype : char *
+Varibale : j 
+Value : "hello" 
+Assignment : =
+
+Datatype : int
+Varibale : func 
+Datatype : int
+Varibale : pu 
+Datatype : char *
+Varibale : x 
+Function Arguments Passed Above
+
+Varibale : x 
+Value : 0 
+Operator : == 
+Varibale : in 
+Value : 9 
+Varibale : a 
+Varibale : cc 
+If Condition Ends 
+
+Varibale : i 
+Value : 10 
+Operator : < 
+Varibale : hemlo 
+Varibale : bhoi 
+While Loop Ends 
+
+Varibale : sevlon 
+Varibale : bhoi 
+Function Defined above
+
+
+Datatype : int
+Varibale : dun 
+Varibale : function 
+Value : 0 
+Datatype : int
+Varibale : dont 
+Value : 1 
+Assignment : =
+Value : 1 
+Return statement 
+
+Function Defined above
+
+
