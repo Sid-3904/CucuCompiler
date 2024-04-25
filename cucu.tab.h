@@ -39,19 +39,19 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     NUM = 258,
-     ID = 259,
-     STRING = 260,
-     INT = 261,
-     CHAR = 262,
-     WHILE = 263,
-     IF = 264,
-     ELSE = 265,
-     RETURN = 266,
-     EQ = 267,
-     LTEQ = 268,
-     GTEQ = 269,
-     NEQ = 270
+     INT = 258,
+     CHAR = 259,
+     WHILE = 260,
+     IF = 261,
+     ELSE = 262,
+     RETURN = 263,
+     EQ = 264,
+     LTEQ = 265,
+     GTEQ = 266,
+     NEQ = 267,
+     NUM = 268,
+     ID = 269,
+     STRING = 270
    };
 #endif
 
@@ -62,7 +62,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 19 "cucu.y"
+#line 22 "cucu.y"
 
     int num;
     char *str;
