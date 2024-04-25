@@ -1,9 +1,82 @@
 VARIABLE-DECLARATION
 Datatype : int
 Identifier : i
-Identifier : x
-
 Assignment : =
-i
+Value : 4
+Value : 5
+Value : 3
+Operator : * 
+Operator : + 
+
+
+VARIABLE-DECLARATION
+Datatype : char*
+Identifier : j
+Assignment : =
+Value : "hello"
+
+FUNCTION-DEFINITION
+Datatype : int
+Identifier : func
+function argument(Datatype: char*): x
+function argument(Datatype: int): pu
+ASSIGNMENT
+Identifier: in
 Identifier : x
+Value : 0
+Operator : == 
+Value : 9
+ASSIGNMENT
+Identifier: a
+Identifier : cc
+IF-CONDITION
+ASSIGNMENT
+Identifier: hemlo
+Identifier : i
+Value : 10
+Operator : < 
+Identifier : bhoi
+WHILE-LOOP
+Condition: 
+ASSIGNMENT
+Identifier: sevlon
+Identifier : bhoi
+
+
+VARIABLE-DECLARATION
+Datatype : int
+Identifier : dont
+Assignment : =
+Value : 1
+
+FUNCTION-DEFINITION
+Datatype : int
+Identifier : dun
+ASSIGNMENT
+Identifier: in
+Identifier : x
+Value : 0
+Operator : == 
+Value : 9
+ASSIGNMENT
+Identifier: a
+Identifier : cc
+IF-CONDITION
+ASSIGNMENT
+Identifier: hemlo
+Identifier : i
+Value : 10
+Operator : < 
+Identifier : bhoi
+WHILE-LOOP
+Condition: 
+ASSIGNMENT
+Identifier: sevlon
+Identifier : bhoi
+ASSIGNMENT
+Identifier: function
+Value : 0
+Value : 1
+ AND RETURN
+
 

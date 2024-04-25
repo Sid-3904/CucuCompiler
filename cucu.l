@@ -28,8 +28,8 @@ void yyerror(char *);
 "int"                   {fprintf(lexer, "TYPE : int\n"); return INT;}
 "char *"                {fprintf(lexer, "TYPE : char*\n"); return CHAR;}
 [A-Za-z][A-Za-z0-9_]*   {fprintf(lexer, "ID : %s\n", yytext); yylval.str=strdup(yytext); return ID;}
-\"[A-Za-z0-9_ ]*\"      {fprintf(lexer, "TYPE : string"); yylval.str=strdup(yytext); return STRING;}
-([1-9][0-9]*|0)         {fprintf(lexer, "NUM : %s\n", yytext); yylval.num=atoi(yytext); return NUM;}
+\"[A-Za-z0-9_ ]*\"      {fprintf(lexer, "TYPE : string\n"); yylval.str=strdup(yytext); return STRING;}
+([1-9][0-9]*|0)         {fprintf(lexer, "NUM : %s\n", yytext); yylval.str=strdup(yytext); return NUM;}
 
 
 

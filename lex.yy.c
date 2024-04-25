@@ -696,12 +696,12 @@ YY_RULE_SETUP
 case 8:
 YY_RULE_SETUP
 #line 31 "cucu.l"
-{fprintf(lexer, "TYPE : string"); yylval.str=strdup(yytext); return STRING;}
+{fprintf(lexer, "TYPE : string\n"); yylval.str=strdup(yytext); return STRING;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 32 "cucu.l"
-{fprintf(lexer, "NUM : %s\n", yytext); yylval.num=atoi(yytext); return NUM;}
+{fprintf(lexer, "NUM : %s\n", yytext); yylval.str=strdup(yytext); return NUM;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
