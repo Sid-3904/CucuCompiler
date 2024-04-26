@@ -1,5 +1,5 @@
 /*
-Sample File
+Sample File 1
 Siddharth Verma
 2022CSB1126
 CS202 Final Project
@@ -10,17 +10,15 @@ Function definitions
 Function declarations
 this comment will be ignored
 */
-int i=(x*2+5)/3;
-int j;
-char *s="Hello World";
-int foo1(int a, char *s){
-    while(a<10){
-        a = a-1;
-    }
-    if(a==0){
-        i=9;
-    }
-    return 2;
+int x = 10;
+int y = (20+x)/3;
+
+char *message = "This is a sample message";
+
+int add(int a, int b) {
+    return a + b;
 }
-int foo2(int s);
-char *foo1(int a, char *s);
+
+char *print_message(char *msg) {
+    printf(msg);
+}

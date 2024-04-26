@@ -1,60 +1,48 @@
 VARIABLE-DECLARATION
 dtype-int
-var-i
-Assignment : =
 var-x
-const-2
-oper * 
-const-5
+Assignment : =
+const-10
+
+
+VARIABLE-DECLARATION
+dtype-int
+var-y
+Assignment : =
+const-20
+var-x
 oper + 
 const-3
 oper / 
 
 
 VARIABLE-DECLARATION
-dtype-int
-var-j
-
-VARIABLE-DECLARATION
 dtype-char*
-var-s
+var-message
 Assignment : =
-Value : "Hello World"
+Value : "This is a sample message"
 
 FUNCTION-DEFINITION
 dtype-int
-var-foo1
-function argument(Datatype: char*): s
+var-add
+function argument(Datatype: int): b
 function argument(Datatype: int): a
-ASSIGNMENT
 var-a
-var-a
-const-10
-oper < 
-var-a
-const-1
-oper - 
-WHILE-LOOP
-Condition: 
-ASSIGNMENT
-var-i
-var-a
-const-0
-oper == 
-const-9
-IF-CONDITION
-const-2
+var-b
+oper + 
 RETURN
 
 
-FUNCTION-DECLARATION
-dtype-int
-var-foo2
-function argument(Datatype: int): s
-
-FUNCTION-DECLARATION
+FUNCTION-DEFINITION
 dtype-char *
-var-foo1
-function argument(Datatype: char*): s
-function argument(Datatype: int): a
+var-print_message
+function argument(Datatype: char*): msg
+var-a
+var-b
+oper + 
+RETURN
+FUNCTION-CALL
+var-printf
+var-msg
+
 

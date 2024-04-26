@@ -1,78 +1,50 @@
 TYPE : int
-ID : i
+ID : x
+ASSIGN : =
+NUM : 10
+SEMI : ;
+TYPE : int
+ID : y
 ASSIGN : =
 L_RD_BRACKET : (
-ID : x
-MUL : *
-NUM : 2
+NUM : 20
 PLUS : +
-NUM : 5
+ID : x
 R_RD_BRACKET : )
 DIV : /
 NUM : 3
 SEMI : ;
-TYPE : int
-ID : j
-SEMI : ;
 TYPE : char *
-ID : s
+ID : message
 ASSIGN : =
-TYPE : string "Hello World"
+TYPE : string "This is a sample message"
 SEMI : ;
 TYPE : int
-ID : foo1
+ID : add
 L_RD_BRACKET : (
 TYPE : int
 ID : a
 COMMA : ,
-TYPE : char *
-ID : s
+TYPE : int
+ID : b
 R_RD_BRACKET : )
 L_CL_BRACKET : {
-WHILE
-L_RD_BRACKET : (
-ID : a
-LS_THAN : <
-NUM : 10
-R_RD_BRACKET : )
-L_CL_BRACKET : {
-ID : a
-ASSIGN : =
-ID : a
-MINUS : +
-NUM : 1
-SEMI : ;
-R_CL_BRACKET : }
-IF
-L_RD_BRACKET : (
-ID : a
-EQL : ==
-NUM : 0
-R_RD_BRACKET : )
-L_CL_BRACKET : {
-ID : i
-ASSIGN : =
-NUM : 9
-SEMI : ;
-R_CL_BRACKET : }
 RETURN
-NUM : 2
+ID : a
+PLUS : +
+ID : b
 SEMI : ;
 R_CL_BRACKET : }
-TYPE : int
-ID : foo2
+TYPE : char *
+ID : print_message
 L_RD_BRACKET : (
-TYPE : int
-ID : s
+TYPE : char *
+ID : msg
+R_RD_BRACKET : )
+L_CL_BRACKET : {
+ID : printf
+L_RD_BRACKET : (
+ID : msg
 R_RD_BRACKET : )
 SEMI : ;
-TYPE : char *
-ID : foo1
-L_RD_BRACKET : (
-TYPE : int
-ID : a
-COMMA : ,
-TYPE : char *
-ID : s
-R_RD_BRACKET : )
-SEMI : ;
+R_CL_BRACKET : }

@@ -86,7 +86,7 @@ extern FILE *yyin;
 int yylex();
 void yyerror(char *);
 
-char exp[500]="";
+char expr[500]="";
 char args[500]="";
 char body[500]="";
 
@@ -1491,7 +1491,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 51 "cucu.y"
-    {fprintf(parser, "VARIABLE-DECLARATION\ndtype-int\nvar-%s\nAssignment : =\n%s\n", (yyvsp[(2) - (5)].str), exp);strcpy(exp, "");}
+    {fprintf(parser, "VARIABLE-DECLARATION\ndtype-int\nvar-%s\nAssignment : =\n%s\n", (yyvsp[(2) - (5)].str), expr);strcpy(expr, "");}
     break;
 
   case 10:
@@ -1512,28 +1512,28 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 56 "cucu.y"
-    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-int\nvar-%s\n%s%s\n", (yyvsp[(2) - (6)].str), args, body);strcpy(args, "");strcpy(args, "");;}
+    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-int\nvar-%s\n%s%s\n", (yyvsp[(2) - (6)].str), args, body);strcpy(args, "");strcpy(args, "");strcpy(expr, "");;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
 #line 57 "cucu.y"
-    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-int\nvar-%s\n%s\n", (yyvsp[(2) - (5)].str), body);strcpy(args, "");;}
+    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-int\nvar-%s\n%s\n", (yyvsp[(2) - (5)].str), body);strcpy(args, "");strcpy(expr, "");;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
 #line 58 "cucu.y"
-    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-char *\nvar-%s\n%s%s\n", (yyvsp[(2) - (6)].str), args, body);strcpy(args, "");strcpy(args, "");;}
+    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-char *\nvar-%s\n%s%s\n", (yyvsp[(2) - (6)].str), args, body);strcpy(args, "");strcpy(args, "");strcpy(expr, "");;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
 #line 59 "cucu.y"
-    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-char *\nvar-%s\n%s\n", (yyvsp[(2) - (5)].str), body);strcpy(args, "");;}
+    {fprintf(parser, "FUNCTION-DEFINITION\ndtype-char *\nvar-%s\n%s\n", (yyvsp[(2) - (5)].str), body);strcpy(args, "");strcpy(expr, "");;}
     break;
 
   case 16:
@@ -1596,7 +1596,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 90 "cucu.y"
-    {strcat(body, "ASSIGNMENT\nvar-"); strcat(body, (yyvsp[(1) - (4)].str)); strcat(body, "\n"); strcat(body, exp); strcpy(exp, "");;}
+    {strcat(body, "ASSIGNMENT\nvar-"); strcat(body, (yyvsp[(1) - (4)].str)); strcat(body, "\n"); strcat(body, expr); strcpy(expr, "");;}
     break;
 
   case 35:
@@ -1610,7 +1610,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 94 "cucu.y"
-    {strcat(body, exp);strcpy(exp, "");strcat(body, "RETURN\n");;}
+    {strcat(body, expr);strcpy(expr, "");strcat(body, "RETURN\n");;}
     break;
 
   case 37:
@@ -1624,112 +1624,112 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 98 "cucu.y"
-    {strcat(body, "FUNCTION-CALL\nvar-");strcat(body, (yyvsp[(1) - (5)].str));strcat(body, "\n");strcat(body, exp);strcpy(exp, "");;}
+    {strcat(body, "FUNCTION-CALL\nvar-");strcat(body, (yyvsp[(1) - (5)].str));strcat(body, "\n");strcat(body, expr);strcpy(expr, "");;}
     break;
 
   case 39:
 
 /* Line 1455 of yacc.c  */
 #line 101 "cucu.y"
-    {strcat(body, "IF-CONDITION\n"); strcat(body, exp);strcpy(exp, "");;}
+    {strcat(body, "IF-CONDITION\n"); strcat(body, expr);strcpy(expr, "");;}
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
 #line 102 "cucu.y"
-    {strcat(body, "IF-ELSE CONDITION\nCondition: \n"); strcat(body, exp);strcpy(exp, "");;}
+    {strcat(body, "IF-ELSE CONDITION\nCondition: \n"); strcat(body, expr);strcpy(expr, "");;}
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
 #line 105 "cucu.y"
-    {strcat(body, "WHILE-LOOP\nCondition: \n"); strcat(body, exp);strcpy(exp, "");;}
+    {strcat(body, "WHILE-LOOP\nCondition: \n"); strcat(body, expr);strcpy(expr, "");;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
 #line 108 "cucu.y"
-    {strcat(exp, "oper < \n");;}
+    {strcat(expr, "oper < \n");;}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
 #line 109 "cucu.y"
-    {strcat(exp, "oper > \n");;}
+    {strcat(expr, "oper > \n");;}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
 #line 110 "cucu.y"
-    {strcat(exp, "oper == \n");;}
+    {strcat(expr, "oper == \n");;}
     break;
 
   case 45:
 
 /* Line 1455 of yacc.c  */
 #line 111 "cucu.y"
-    {strcat(exp, "oper != \n");;}
+    {strcat(expr, "oper != \n");;}
     break;
 
   case 46:
 
 /* Line 1455 of yacc.c  */
 #line 112 "cucu.y"
-    {strcat(exp, "oper <= \n");;}
+    {strcat(expr, "oper <= \n");;}
     break;
 
   case 47:
 
 /* Line 1455 of yacc.c  */
 #line 113 "cucu.y"
-    {strcat(exp, "oper >= \n");;}
+    {strcat(expr, "oper >= \n");;}
     break;
 
   case 50:
 
 /* Line 1455 of yacc.c  */
 #line 118 "cucu.y"
-    {strcat(exp, "oper + \n");;}
+    {strcat(expr, "oper + \n");;}
     break;
 
   case 51:
 
 /* Line 1455 of yacc.c  */
 #line 119 "cucu.y"
-    {strcat(exp, "oper - \n");;}
+    {strcat(expr, "oper - \n");;}
     break;
 
   case 52:
 
 /* Line 1455 of yacc.c  */
 #line 120 "cucu.y"
-    {strcat(exp, "oper * \n");;}
+    {strcat(expr, "oper * \n");;}
     break;
 
   case 53:
 
 /* Line 1455 of yacc.c  */
 #line 121 "cucu.y"
-    {strcat(exp, "oper / \n");;}
+    {strcat(expr, "oper / \n");;}
     break;
 
   case 54:
 
 /* Line 1455 of yacc.c  */
 #line 122 "cucu.y"
-    {strcat(exp, "const-");strcat(exp, (yyvsp[(1) - (1)].str));strcat(exp, "\n");;}
+    {strcat(expr, "const-");strcat(expr, (yyvsp[(1) - (1)].str));strcat(expr, "\n");;}
     break;
 
   case 55:
 
 /* Line 1455 of yacc.c  */
 #line 123 "cucu.y"
-    {strcat(exp, "var-");strcat(exp, (yyvsp[(1) - (1)].str));strcat(exp, "\n");;}
+    {strcat(expr, "var-");strcat(expr, (yyvsp[(1) - (1)].str));strcat(expr, "\n");;}
     break;
 
 
