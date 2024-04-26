@@ -18,17 +18,17 @@ void yyerror(char *);
 
 %%
 
-"if"                    {fprintf(lexer, "IF : if\n"); return IF;}
-"else"                  {fprintf(lexer, "ELSE : else\n"); return ELSE;}
-"while"                 {fprintf(lexer, "WHILE : while\n"); return WHILE;}
-"return"                {fprintf(lexer, "RETURN : return\n"); return RETURN;}
+"if"                    {fprintf(lexer, "IF\n"); return IF;}
+"else"                  {fprintf(lexer, "ELSE\n"); return ELSE;}
+"while"                 {fprintf(lexer, "WHILE\n"); return WHILE;}
+"return"                {fprintf(lexer, "RETURN\n"); return RETURN;}
 
 
 
 "int"                   {fprintf(lexer, "TYPE : int\n"); return INT;}
-"char *"                {fprintf(lexer, "TYPE : char*\n"); return CHAR;}
+"char *"                {fprintf(lexer, "TYPE : char *\n"); return CHAR;}
 [A-Za-z][A-Za-z0-9_]*   {fprintf(lexer, "ID : %s\n", yytext); yylval.str=strdup(yytext); return ID;}
-\"[A-Za-z0-9_ ]*\"      {fprintf(lexer, "TYPE : string\n"); yylval.str=strdup(yytext); return STRING;}
+\"[A-Za-z0-9_ ]*\"      {fprintf(lexer, "TYPE : string %s\n", yytext); yylval.str=strdup(yytext); return STRING;}
 ([1-9][0-9]*|0)         {fprintf(lexer, "NUM : %s\n", yytext); yylval.str=strdup(yytext); return NUM;}
 
 
@@ -38,23 +38,23 @@ void yyerror(char *);
 "*"                     {fprintf(lexer, "MUL : *\n"); return *yytext;}
 "/"                     {fprintf(lexer, "DIV : /\n"); return *yytext;}
 "="                     {fprintf(lexer, "ASSIGN : =\n"); return *yytext;}
-">"                     {fprintf(lexer, "GREATER_THAN : >\n"); return *yytext;}
-"<"                     {fprintf(lexer, "LESS_THAN : <\n"); return *yytext;}
+">"                     {fprintf(lexer, "GTR_THAN : >\n"); return *yytext;}
+"<"                     {fprintf(lexer, "LS_THAN : <\n"); return *yytext;}
 ";"                     {fprintf(lexer, "SEMI : ;\n"); return *yytext;}
 ","                     {fprintf(lexer, "COMMA : ,\n"); return *yytext;}
-\(                      {fprintf(lexer, "LEFT_BRAC : (\n"); return *yytext;}
-\)                      {fprintf(lexer, "RIGHT_BRAC : )\n"); return *yytext;}
-\{                      {fprintf(lexer, "LEFT_CURLY : {\n"); return *yytext;}
-\}                      {fprintf(lexer, "RIGHT_CURLY : }\n"); return *yytext;}
-\[                      {fprintf(lexer, "LEFT_SQBRAC : [\n"); return *yytext;}
-\]                      {fprintf(lexer, "RIGHT_SQBRAC : ]\n"); return *yytext;}
+\(                      {fprintf(lexer, "L_RD_BRACKET : (\n"); return *yytext;}
+\)                      {fprintf(lexer, "R_RD_BRACKET : )\n"); return *yytext;}
+\{                      {fprintf(lexer, "L_CL_BRACKET : {\n"); return *yytext;}
+\}                      {fprintf(lexer, "R_CL_BRACKET : }\n"); return *yytext;}
+\[                      {fprintf(lexer, "L_SQ_BRACKET : [\n"); return *yytext;}
+\]                      {fprintf(lexer, "R_SQ_BRACKET : ]\n"); return *yytext;}
 
 
 
-"=="                    {fprintf(lexer, "COMPARE_EQUAL : ==\n"); return EQ;}
-"<="                    {fprintf(lexer, "LESS_THAN_EQUAL : <=\n"); return LTEQ;}
-">="                    {fprintf(lexer, "GREATER_THAN_EQUAL : >=\n"); return GTEQ;}
-"!="                    {fprintf(lexer, "COMPARE_NOT_EQUAL : !=\n"); return NEQ;}
+"=="                    {fprintf(lexer, "EQL : ==\n"); return EQ;}
+"<="                    {fprintf(lexer, "LTEQ : <=\n"); return LTEQ;}
+">="                    {fprintf(lexer, "GTEQ : >=\n"); return GTEQ;}
+"!="                    {fprintf(lexer, "NEQ : !=\n"); return NEQ;}
 
 
 

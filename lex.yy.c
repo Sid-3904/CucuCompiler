@@ -661,22 +661,22 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 21 "cucu.l"
-{fprintf(lexer, "IF : if\n"); return IF;}
+{fprintf(lexer, "IF\n"); return IF;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 22 "cucu.l"
-{fprintf(lexer, "ELSE : else\n"); return ELSE;}
+{fprintf(lexer, "ELSE\n"); return ELSE;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 23 "cucu.l"
-{fprintf(lexer, "WHILE : while\n"); return WHILE;}
+{fprintf(lexer, "WHILE\n"); return WHILE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 24 "cucu.l"
-{fprintf(lexer, "RETURN : return\n"); return RETURN;}
+{fprintf(lexer, "RETURN\n"); return RETURN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
@@ -686,7 +686,7 @@ YY_RULE_SETUP
 case 6:
 YY_RULE_SETUP
 #line 29 "cucu.l"
-{fprintf(lexer, "TYPE : char*\n"); return CHAR;}
+{fprintf(lexer, "TYPE : char *\n"); return CHAR;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
@@ -696,7 +696,7 @@ YY_RULE_SETUP
 case 8:
 YY_RULE_SETUP
 #line 31 "cucu.l"
-{fprintf(lexer, "TYPE : string\n"); yylval.str=strdup(yytext); return STRING;}
+{fprintf(lexer, "TYPE : string %s\n", yytext); yylval.str=strdup(yytext); return STRING;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
@@ -731,12 +731,12 @@ YY_RULE_SETUP
 case 15:
 YY_RULE_SETUP
 #line 41 "cucu.l"
-{fprintf(lexer, "GREATER_THAN : >\n"); return *yytext;}
+{fprintf(lexer, "GTR_THAN : >\n"); return *yytext;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 42 "cucu.l"
-{fprintf(lexer, "LESS_THAN : <\n"); return *yytext;}
+{fprintf(lexer, "LS_THAN : <\n"); return *yytext;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
@@ -751,52 +751,52 @@ YY_RULE_SETUP
 case 19:
 YY_RULE_SETUP
 #line 45 "cucu.l"
-{fprintf(lexer, "LEFT_BRAC : (\n"); return *yytext;}
+{fprintf(lexer, "L_RD_BRACKET : (\n"); return *yytext;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 46 "cucu.l"
-{fprintf(lexer, "RIGHT_BRAC : )\n"); return *yytext;}
+{fprintf(lexer, "R_RD_BRACKET : )\n"); return *yytext;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 47 "cucu.l"
-{fprintf(lexer, "LEFT_CURLY : {\n"); return *yytext;}
+{fprintf(lexer, "L_CL_BRACKET : {\n"); return *yytext;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 48 "cucu.l"
-{fprintf(lexer, "RIGHT_CURLY : }\n"); return *yytext;}
+{fprintf(lexer, "R_CL_BRACKET : }\n"); return *yytext;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 49 "cucu.l"
-{fprintf(lexer, "LEFT_SQBRAC : [\n"); return *yytext;}
+{fprintf(lexer, "L_SQ_BRACKET : [\n"); return *yytext;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 50 "cucu.l"
-{fprintf(lexer, "RIGHT_SQBRAC : ]\n"); return *yytext;}
+{fprintf(lexer, "R_SQ_BRACKET : ]\n"); return *yytext;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 54 "cucu.l"
-{fprintf(lexer, "COMPARE_EQUAL : ==\n"); return EQ;}
+{fprintf(lexer, "EQL : ==\n"); return EQ;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 55 "cucu.l"
-{fprintf(lexer, "LESS_THAN_EQUAL : <=\n"); return LTEQ;}
+{fprintf(lexer, "LTEQ : <=\n"); return LTEQ;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 56 "cucu.l"
-{fprintf(lexer, "GREATER_THAN_EQUAL : >=\n"); return GTEQ;}
+{fprintf(lexer, "GTEQ : >=\n"); return GTEQ;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 57 "cucu.l"
-{fprintf(lexer, "COMPARE_NOT_EQUAL : !=\n"); return NEQ;}
+{fprintf(lexer, "NEQ : !=\n"); return NEQ;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP

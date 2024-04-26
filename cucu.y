@@ -47,31 +47,31 @@ construct: variable_declaration             {fprintf(parser, "\n");}
         | function_declaration              {fprintf(parser, "\n");}
         ;
 
-variable_declaration: INT ID ';'         {fprintf(parser, "VARIABLE-DECLARATION\nDatatype : int\nIdentifier : %s\n", $2);}
-                    | INT ID '=' expression ';'        {fprintf(parser, "VARIABLE-DECLARATION\nDatatype : int\nIdentifier : %s\nAssignment : =\n%s\n", $2, exp);strcpy(exp, "")}
-                    | CHAR ID ';'               {fprintf(parser, "VARIABLE-DECLARATION\nDatatype : char*\nIdentifier : %s\n", $2);}
-                    | CHAR ID '=' STRING ';'     {fprintf(parser, "VARIABLE-DECLARATION\nDatatype : char*\nIdentifier : %s\nAssignment : =\nValue : %s\n", $2, $4);}
+variable_declaration: INT ID ';'                    {fprintf(parser, "VARIABLE-DECLARATION\ndtype-int\nvar-%s\n", $2);}
+                    | INT ID '=' E ';'              {fprintf(parser, "VARIABLE-DECLARATION\ndtype-int\nvar-%s\nAssignment : =\n%s\n", $2, exp);strcpy(exp, "")}
+                    | CHAR ID ';'                   {fprintf(parser, "VARIABLE-DECLARATION\ndtype-char*\nvar-%s\n", $2);}
+                    | CHAR ID '=' STRING ';'        {fprintf(parser, "VARIABLE-DECLARATION\ndtype-char*\nvar-%s\nAssignment : =\nValue : %s\n", $2, $4);}
                     ;
 
-function_definition : INT ID '(' func_args ')' func_body       {fprintf(parser, "FUNCTION-DEFINITION\nDatatype : int\nIdentifier : %s\n%s%s\n", $2, args, body);strcpy(args, "");strcpy(args, "");}
-    | INT ID '(' ')' func_body                      {fprintf(parser, "FUNCTION-DEFINITION\nDatatype : int\nIdentifier : %s\n%s\n", $2, body);strcpy(args, "");}
-    | CHAR ID '(' func_args ')' func_body           {fprintf(parser, "FUNCTION-DEFINITION\nDatatype : char *\nIdentifier : %s\n%s%s\n", $2, args, body);strcpy(args, "");strcpy(args, "");}
-    | CHAR ID '(' ')' func_body                     {fprintf(parser, "FUNCTION-DEFINITION\nDatatype : char *\nIdentifier : %s\n%s\n", $2, body);strcpy(args, "");}
+function_definition : INT ID '(' function_arguments ')' function_body       {fprintf(parser, "FUNCTION-DEFINITION\ndtype-int\nvar-%s\n%s%s\n", $2, args, body);strcpy(args, "");strcpy(args, "");}
+    | INT ID '(' ')' function_body                                          {fprintf(parser, "FUNCTION-DEFINITION\ndtype-int\nvar-%s\n%s\n", $2, body);strcpy(args, "");}
+    | CHAR ID '(' function_arguments ')' function_body                      {fprintf(parser, "FUNCTION-DEFINITION\ndtype-char *\nvar-%s\n%s%s\n", $2, args, body);strcpy(args, "");strcpy(args, "");}
+    | CHAR ID '(' ')' function_body                                         {fprintf(parser, "FUNCTION-DEFINITION\ndtype-char *\nvar-%s\n%s\n", $2, body);strcpy(args, "");}
     ;
 
-function_declaration : INT ID '(' func_args ')' ';'           {fprintf(parser, "FUNCTION-DECLARATION\nDatatype : int\nIdentifier : %s\n%s", $2, args);strcpy(args, "");}
-    | INT ID '(' ')' ';'                           {fprintf(parser, "FUNCTION-DECLARATION\nDatatype : int\nIdentifier : %s\n", $2);}
-    | CHAR ID '(' func_args ')' ';'                {fprintf(parser, "FUNCTION-DECLARATION\nDatatype : char *\nIdentifier : %s\n%s", $2, args);strcpy(args, "");}
-    | CHAR ID '(' ')' ';'                          {fprintf(parser, "FUNCTION-DECLARATION\nDatatype : char *\nIdentifier : %s\n", $2);}
+function_declaration : INT ID '(' function_arguments ')' ';'            {fprintf(parser, "FUNCTION-DECLARATION\ndtype-int\nvar-%s\n%s", $2, args);strcpy(args, "");}
+    | INT ID '(' ')' ';'                                                {fprintf(parser, "FUNCTION-DECLARATION\ndtype-int\nvar-%s\n", $2);}
+    | CHAR ID '(' function_arguments ')' ';'                            {fprintf(parser, "FUNCTION-DECLARATION\ndtype-char *\nvar-%s\n%s", $2, args);strcpy(args, "");}
+    | CHAR ID '(' ')' ';'                                               {fprintf(parser, "FUNCTION-DECLARATION\ndtype-char *\nvar-%s\n", $2);}
     ;
 
-func_args : INT ID                   {strcat(args, "function argument(Datatype: int): ");strcat(args, $2);strcat(args, "\n");}
-    | INT ID ',' func_args          {strcat(args, "function argument(Datatype: int): ");strcat(args, $2);strcat(args, "\n");}
-    | CHAR ID                        {strcat(args, "function argument(Datatype: char*): ");strcat(args, $2);strcat(args, "\n");}
-    | CHAR ID ',' func_args         {strcat(args, "function argument(Datatype: char*): ");strcat(args, $2);strcat(args, "\n");}
+function_arguments : INT ID                     {strcat(args, "function argument(Datatype: int): ");strcat(args, $2);strcat(args, "\n");}
+    | INT ID ',' function_arguments             {strcat(args, "function argument(Datatype: int): ");strcat(args, $2);strcat(args, "\n");}
+    | CHAR ID                                   {strcat(args, "function argument(Datatype: char*): ");strcat(args, $2);strcat(args, "\n");}
+    | CHAR ID ',' function_arguments            {strcat(args, "function argument(Datatype: char*): ");strcat(args, $2);strcat(args, "\n");}
     ;
 
-func_body : '{' stmt_list '}'
+function_body : '{' stmt_list '}'
     | stmt
     ;
 
@@ -79,48 +79,48 @@ stmt_list : stmt_list stmt
     | stmt
     ;
 
-stmt : assign_stmt
-    | func_call
-    | return_stmt
-    | condition
-    | loop
+stmt : assignment_stmt
+    | if_condition
+    | while_loop
+    | function_call
     | variable_declaration
+    | return_statement
     ;
 
-assign_stmt : ID '=' expression ';' {strcat(body, "ASSIGNMENT\nIdentifier: "); strcat(body, $1); strcat(body, "\n"); strcat(body, exp); strcpy(exp, "");}
+assignment_stmt : ID '=' E ';'      {strcat(body, "ASSIGNMENT\nvar-"); strcat(body, $1); strcat(body, "\n"); strcat(body, exp); strcpy(exp, "");}
     ;
 
-return_stmt : RETURN ';'        {strcat(body, "RETURN\n");}
-    | RETURN expression ';'     {strcat(body, exp);strcpy(exp, "");strcat(body, " AND RETURN\n");}
+return_statement : RETURN ';'       {strcat(body, "RETURN\n");}
+    | RETURN E ';'                  {strcat(body, exp);strcpy(exp, "");strcat(body, "RETURN\n");}
     ;
 
-func_call : ID '(' ')' ';'      {strcat(body, "FUNCTION-CALL\nIdentifier: ");strcat(body, $1);strcat(body, "\n");}
-    | ID '(' expression ')' ';' {strcat(body, "FUNCTION-CALL\nIdentifier: ");strcat(body, $1);strcat(body, "\n");strcat(body, exp);strcpy(exp, "");}
+function_call : ID '(' ')' ';'      {strcat(body, "FUNCTION-CALL\nvar-");strcat(body, $1);strcat(body, "\n");}
+    | ID '(' E ')' ';'              {strcat(body, "FUNCTION-CALL\nvar-");strcat(body, $1);strcat(body, "\n");strcat(body, exp);strcpy(exp, "");}
     ;
 
-condition : IF '(' boolean_expr ')' func_body   {strcat(body, "IF-CONDITION\n"); strcat(body, exp);strcpy(exp, "");}
-    | IF '(' boolean_expr ')' func_body ELSE func_body  {strcat(body, "IF-ELSE CONDITION\nCondition: \n"); strcat(body, exp);strcpy(exp, "");}
+if_condition : IF '(' BE ')' function_body              {strcat(body, "IF-CONDITION\n"); strcat(body, exp);strcpy(exp, "");}
+    | IF '(' BE ')' function_body ELSE function_body    {strcat(body, "IF-ELSE CONDITION\nCondition: \n"); strcat(body, exp);strcpy(exp, "");}
     ;
 
-loop: WHILE '(' boolean_expr ')' func_body      {strcat(body, "WHILE-LOOP\nCondition: \n"); strcat(body, exp);strcpy(exp, "");}
+while_loop: WHILE '(' BE ')' function_body              {strcat(body, "WHILE-LOOP\nCondition: \n"); strcat(body, exp);strcpy(exp, "");}
     ;
 
-boolean_expr: boolean_expr '<' boolean_expr               {strcat(exp, "Operator : < \n");}
-    | boolean_expr '>' boolean_expr            {strcat(exp, "Operator : > \n");}
-    | boolean_expr EQ boolean_expr           {strcat(exp, "Operator : == \n");}
-    | boolean_expr NEQ boolean_expr       {strcat(exp, "Operator : != \n");}
-    | boolean_expr LTEQ boolean_expr         {strcat(exp, "Operator : <= \n");}
-    | boolean_expr GTEQ boolean_expr      {strcat(exp, "Operator : >= \n");}
-    | expression                            
+BE: BE '<' BE               {strcat(exp, "oper < \n");}
+    | BE '>' BE             {strcat(exp, "oper > \n");}
+    | BE EQ BE              {strcat(exp, "oper == \n");}
+    | BE NEQ BE             {strcat(exp, "oper != \n");}
+    | BE LTEQ BE            {strcat(exp, "oper <= \n");}
+    | BE GTEQ BE            {strcat(exp, "oper >= \n");}
+    | E                            
     ;
 
-expression: '(' expression ')'              
-    | expression '+' expression            {strcat(exp, "Operator : + \n");}
-    | expression '-' expression           {strcat(exp, "Operator : - \n");}
-    | expression '*' expression             {strcat(exp, "Operator : * \n");}
-    | expression '/' expression             {strcat(exp, "Operator : / \n");}
-    | NUM                                   {strcat(exp, "Value : ");strcat(exp, $1);strcat(exp, "\n");}
-    | ID                                    {strcat(exp, "Identifier : ");strcat(exp, $1);strcat(exp, "\n");}
+E: '(' E ')'              
+    | E '+' E               {strcat(exp, "oper + \n");}
+    | E '-' E               {strcat(exp, "oper - \n");}
+    | E '*' E               {strcat(exp, "oper * \n");}
+    | E '/' E               {strcat(exp, "oper / \n");}
+    | NUM                   {strcat(exp, "const-");strcat(exp, $1);strcat(exp, "\n");}
+    | ID                    {strcat(exp, "var-");strcat(exp, $1);strcat(exp, "\n");}
     ;
 
 %%

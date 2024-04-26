@@ -1,82 +1,60 @@
 VARIABLE-DECLARATION
-Datatype : int
-Identifier : i
+dtype-int
+var-i
 Assignment : =
-Value : 4
-Value : 5
-Value : 3
-Operator : * 
-Operator : + 
+var-x
+const-2
+oper * 
+const-5
+oper + 
+const-3
+oper / 
 
 
 VARIABLE-DECLARATION
-Datatype : char*
-Identifier : j
-Assignment : =
-Value : "hello"
-
-FUNCTION-DEFINITION
-Datatype : int
-Identifier : func
-function argument(Datatype: char*): x
-function argument(Datatype: int): pu
-ASSIGNMENT
-Identifier: in
-Identifier : x
-Value : 0
-Operator : == 
-Value : 9
-ASSIGNMENT
-Identifier: a
-Identifier : cc
-IF-CONDITION
-ASSIGNMENT
-Identifier: hemlo
-Identifier : i
-Value : 10
-Operator : < 
-Identifier : bhoi
-WHILE-LOOP
-Condition: 
-ASSIGNMENT
-Identifier: sevlon
-Identifier : bhoi
-
+dtype-int
+var-j
 
 VARIABLE-DECLARATION
-Datatype : int
-Identifier : dont
+dtype-char*
+var-s
 Assignment : =
-Value : 1
+Value : "Hello World"
 
 FUNCTION-DEFINITION
-Datatype : int
-Identifier : dun
+dtype-int
+var-foo1
+function argument(Datatype: char*): s
+function argument(Datatype: int): a
 ASSIGNMENT
-Identifier: in
-Identifier : x
-Value : 0
-Operator : == 
-Value : 9
-ASSIGNMENT
-Identifier: a
-Identifier : cc
-IF-CONDITION
-ASSIGNMENT
-Identifier: hemlo
-Identifier : i
-Value : 10
-Operator : < 
-Identifier : bhoi
+var-a
+var-a
+const-10
+oper < 
+var-a
+const-1
+oper - 
 WHILE-LOOP
 Condition: 
 ASSIGNMENT
-Identifier: sevlon
-Identifier : bhoi
-ASSIGNMENT
-Identifier: function
-Value : 0
-Value : 1
- AND RETURN
+var-i
+var-a
+const-0
+oper == 
+const-9
+IF-CONDITION
+const-2
+RETURN
 
+
+FUNCTION-DECLARATION
+dtype-int
+var-foo2
+function argument(Datatype: int): s
+
+FUNCTION-DECLARATION
+dtype-char *
+var-foo1
+function argument(Datatype: char*): s
+function argument(Datatype: int): a
 
